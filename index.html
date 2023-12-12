@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A8 SHOP</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <nav class="side-nav">
+        <ul>
+            <li><i class="material-icons">fastfood</i></li>
+            <li><i class="material-icons">coffee</i></li>
+            <li><i class="material-icons">history</i></li>
+            <li><i class="material-icons">category</i></li>
+        </ul>
+    </nav>
+
+    <div class="search-bar">
+        <h2 id="shop-name">A8SHOP</h2>
+        <div class="search">
+            <i class="material-icons" >search</i>
+            <input type="text" name="search" id="search-input" placeholder="Search here!">
+        </div>
+    </div>
+
+    <main>
+        <div class="list-container">
+            <h3 class="category-name"> Food </h3>
+            <div class="product-list">
+                <div class="product">
+                    <img src="/PICTURES/mister-potato.png" class="product-img" alt="">
+                    <p class="product-name">Mister Potato</p>
+                    <p class="product-stock">Total in Stock: 10</p>
+                    <p class="product-price">Price: 5$</p>
+                    <button class="add-btn">Add!</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="cart-container">
+            <h2>Add to Cart!</h2>
+            <div class="product-incart">
+                <p class="pname">mister-potato</p>
+                <div class="quantity-container">
+                    <i id="minus" class="material-icons">remove</i>
+                    <p class="quantity-value">1</p>
+                    <i id="add" class="material-icons">add</i>
+                </div>
+                <p>Price: 5$</p>
+                <i id="delete-icon" class="material-icons">delete</i>
+            </div>
+        </div>
+        
+        <div class="pay">
+            <p class="final-amount">Total: 200$</p>
+            <button class="pay-btn">Pay</button>
+        </div>
+    </main>
+</body>
+</html>
