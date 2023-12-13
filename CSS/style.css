@@ -135,43 +135,21 @@ main{
 .cart-container h2{
     text-align: center;
 }
-.product-incart{
-    background-color: #fff;
-    border-radius: 50px;
-    width: 80%;
+/* .product-incart{
     display: flex;
-    justify-content: space-between;
-    padding: 0px 20px;
-    margin-left: 15px;
-    margin-bottom: 10px;
-}
-.quantity-container{
-    display: flex;
-}
-.product-incart p{
-    font-size: 15px;
-}
-.quantity-container i{
-    background-color: black;
-    color: white;
-    margin: 0%;
-    padding: 0%;
-}
-i:hover{
-    cursor: pointer;
-}
-#add, #minus{
+} */
 
-    height: 18px;
-    font-size: 14px;
-    margin-top: 12px;
-    padding-top: 2px;
+.cardpay{
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    align-items: center;
 }
-#delete-icon{
-    margin-top: 10px;
-}
-.quantity-value{
-    margin: 15px 2.5px;
+
+.bntdelet{
+    height: 20px;
+    text-transform: uppercase;
+    font-size: 10px;
 }
 
 /* pay  */
