@@ -121,6 +121,15 @@ function createCardPay(event) {
     cardPay.appendChild(cardPricePay);
     cardPay.appendChild(bntDeleteCard);
     cardContent.appendChild(cardPay);
+
+    bntDeleteCard.addEventListener('click',delet);
+
+}
+
+function delet(event){
+    if (confirm('Are you wanting to remove order?')){
+        event.target.parentElement.remove();
+    }
 }
 
 /*Get buttons category */
