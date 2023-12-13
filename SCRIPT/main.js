@@ -7,7 +7,7 @@ let homeProductShow = [
 
 let shoesProducShow = [
     { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
-    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: " potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
 ];
