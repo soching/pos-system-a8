@@ -1,22 +1,27 @@
-let snackDatas = [
-    // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
-    // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+let homeProductShow = [
+    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+];
+
+let shoesProducShow = [
+    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
 ];
-// new data
 
-/*Data save to localstorag */
+// Data save to local storage
 function saveSnackData() {
-    localStorage.setItem('snackDatas', JSON.stringify(snackDatas));
+    localStorage.setItem('ProductShow', JSON.stringify(homeProductShow));
 }
-// saveSnackData();
 
-/*laod data from localstorag */
+// Load data from local storage
 function loadSnackData() {
-    const snackDataString = localStorage.getItem('snackDatas');
+    const snackDataString = localStorage.getItem('ProductShow');
     if (snackDataString) {
-        snackDatas = JSON.parse(snackDataString);
+        homeProductShow = JSON.parse(snackDataString);
     }
 }
 
@@ -25,7 +30,6 @@ function createProduct(data) {
     product_list.innerHTML = '';
     for (let i = 0; i < data.length; i++) {
         let product = data[i];
-        console.log(product);
         let productContainer = document.createElement('div');
         productContainer.classList.add('product');
 
@@ -69,6 +73,7 @@ function createProduct(data) {
 
         product_list.appendChild(productContainer);
     }
+    
 }
 
 function createCardPay(event) {
@@ -76,7 +81,7 @@ function createCardPay(event) {
 
     let button = event.currentTarget;
     let buttonId = button.id;
-    let indexCard = snackDatas[buttonId];
+    let indexCard = homeProductShow[buttonId];
     let cardPay = document.createElement('div');
     cardPay.className = 'cardpay';
 
@@ -100,7 +105,16 @@ function createCardPay(event) {
     cardContent.appendChild(cardPay);
 }
 
+/*Get buttons category */
+let homeProduct = document.querySelector('#homeProduc');
+homeProduct.addEventListener('click', function () {
+    createProduct(homeProductShow);
+});
 
+let shoeProduct = document.querySelector('#Shoes');
+shoeProduct.addEventListener('click', function () {
+    createProduct(shoesProducShow);
+});
 
 loadSnackData();
-createProduct(snackDatas);
+createProduct(homeProductShow);
