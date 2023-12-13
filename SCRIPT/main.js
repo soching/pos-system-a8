@@ -25,8 +25,12 @@ function loadSnackData() {
     }
 }
 
+
+let product_list;
+
 function createProduct(data) {
-    let product_list = document.querySelector(".product-list");
+    product_list = document.querySelector(".product-list");
+
     product_list.innerHTML = '';
     for (let i = 0; i < data.length; i++) {
         let product = data[i];
@@ -76,6 +80,22 @@ function createProduct(data) {
     
 }
 
+function searchPro() {
+    for (pName of product_list.children){
+        if(pName.children[1].textContent.toLocaleLowerCase().includes(searchName.value.toLocaleLowerCase())){
+            pName.style.display = "block";
+        }
+        else{
+            pName.style.display = "none";
+        }
+    }
+   
+}
+let searchName = document.querySelector("#search-input");
+
+
+
+
 function createCardPay(event) {
     let cardContent = document.querySelector('.product-incart');
 
@@ -117,4 +137,4 @@ shoeProduct.addEventListener('click', function () {
 });
 
 loadSnackData();
-createProduct(homeProductShow);
+createProduct(snackDatas);
