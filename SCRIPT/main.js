@@ -7,7 +7,7 @@ let homeProductShow = [
 
 let shoesProducShow = [
     { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
-    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: " potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
 ];
@@ -77,19 +77,18 @@ function createProduct(data) {
 
         product_list.appendChild(productContainer);
     }
-    
 }
 
 function searchPro() {
-    for (pName of product_list.children){
-        if(pName.children[1].textContent.toLocaleLowerCase().includes(searchName.value.toLocaleLowerCase())){
+    for (pName of product_list.children) {
+        if (pName.children[1].textContent.toLocaleLowerCase().includes(searchName.value.toLocaleLowerCase())) {
             pName.style.display = "block";
         }
-        else{
+        else {
             pName.style.display = "none";
         }
     }
-   
+
 }
 let searchName = document.querySelector("#search-input");
 
@@ -117,7 +116,6 @@ function createCardPay(event) {
     let bntDeleteCard = document.createElement('button');
     bntDeleteCard.className = 'bntdelet';
     bntDeleteCard.textContent = 'delete';
-
     cardPay.appendChild(cardNamePay);
     cardPay.appendChild(cardQuality);
     cardPay.appendChild(cardPricePay);
@@ -137,4 +135,5 @@ shoeProduct.addEventListener('click', function () {
 });
 
 loadSnackData();
-createProduct(snackDatas);
+createProduct(homeProductShow);
+searchName.addEventListener('keyup', searchPro);
