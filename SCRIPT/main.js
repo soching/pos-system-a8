@@ -148,7 +148,13 @@ function createCardPay(event) {
         cardContent.appendChild(cardPay);
 
         bntDeleteCard.addEventListener('click', delet);
+    }
 
+}
+
+function delet(event){
+    if (confirm('Are you wanting to remove order?')){
+        event.target.parentElement.remove();
     }
 }
 
