@@ -96,31 +96,60 @@ let searchName = document.querySelector("#search-input");
 
 
 function createCardPay(event) {
+    let isNotExit = true;
     let cardContent = document.querySelector('.product-incart');
 
     let button = event.currentTarget;
     let buttonId = button.id;
     let indexCard = homeProductShow[buttonId];
-    let cardPay = document.createElement('div');
-    cardPay.className = 'cardpay';
 
-    let cardNamePay = document.createElement('p');
-    cardNamePay.textContent = "Name: " + indexCard.name;
+    for (Quantitys of cardContent.children) {
+        let a = Quantitys.children[0].textContent
+        if (a === indexCard.name) {
+            isNotExit = false;
+            if(indexCard.stock > Quantitys.children[1].children[0].textContent){
+                Quantitys.children[1].children[0].textContent = parseInt(Quantitys.children[1].children[0].textContent) + 1;
+                Quantitys.children[2].children[0].textContent = parseInt(indexCard.price) * parseInt(Quantitys.children[1].children[0].textContent) + "$";
+            }
 
-    let cardQuality = document.createElement('p');
-    cardQuality.textContent = "Quantity: " + 1;
+        }
+    }
+    if (isNotExit) {
+        let cardPay = document.createElement('div');
+        cardPay.className = 'cardpay';
 
-    let cardPricePay = document.createElement('p');
-    cardPricePay.textContent = "Price: " + indexCard.price + '$';
+        let cardNamePay = document.createElement('p');
+        cardNamePay.textContent = indexCard.name;
 
-    let bntDeleteCard = document.createElement('button');
-    bntDeleteCard.className = 'bntdelet';
-    bntDeleteCard.textContent = 'delete';
-    cardPay.appendChild(cardNamePay);
-    cardPay.appendChild(cardQuality);
-    cardPay.appendChild(cardPricePay);
-    cardPay.appendChild(bntDeleteCard);
-    cardContent.appendChild(cardPay);
+        let cardQuality = document.createElement('p');
+        cardQuality.textContent = "Quantity: " ;
+        //---------------
+        let quantitySpan = document.createElement('span');
+        quantitySpan.textContent = 1;
+        cardQuality.appendChild(quantitySpan);
+        //-------------
+
+        let cardPricePay = document.createElement('p');
+        cardPricePay.textContent = "Price: " ;
+
+        //----------------
+        let priceSpan = document.createElement('span');
+        priceSpan.textContent = indexCard.price + "$";
+        cardPricePay.appendChild(priceSpan);
+        //--------------
+
+        let bntDeleteCard = document.createElement('button');
+        bntDeleteCard.className = 'bntdelet';
+        bntDeleteCard.textContent = 'delete';
+        cardPay.appendChild(cardNamePay);
+        cardPay.appendChild(cardQuality);
+        cardPay.appendChild(cardPricePay);
+        cardPay.appendChild(bntDeleteCard);
+        cardContent.appendChild(cardPay);
+
+        bntDeleteCard.addEventListener('click', delet);
+
+    }
 }
 
 /*Get buttons category */
