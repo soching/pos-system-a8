@@ -1,13 +1,13 @@
 let homeProductShow = [
-    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: "Potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
 ];
 
 let shoesProducShow = [
-    { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
-    { name: " potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: "Mister", stock: 10, price: 2, img: 'Images/mister_potato.png' },
+    { name: "Potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
     // { name: "Mister potato", stock: 10, price: 2, img: 'Images/mister_potato.png' },
 ];
@@ -97,10 +97,10 @@ let searchName = document.querySelector("#search-input");
 
 function createCardPay(event) {
     let cardContent = document.querySelector('.product-incart');
-
     let button = event.currentTarget;
     let buttonId = button.id;
     let indexCard = homeProductShow[buttonId];
+
     let cardPay = document.createElement('div');
     cardPay.className = 'cardpay';
 
@@ -108,6 +108,7 @@ function createCardPay(event) {
     cardNamePay.textContent = "Name: " + indexCard.name;
 
     let cardQuality = document.createElement('p');
+    cardQuality.className = 'card-quality';
     cardQuality.textContent = "Quantity: " + 1;
 
     let cardPricePay = document.createElement('p');
@@ -120,14 +121,17 @@ function createCardPay(event) {
     cardPay.appendChild(cardQuality);
     cardPay.appendChild(cardPricePay);
     cardPay.appendChild(bntDeleteCard);
+
+    // Add a data attribute to the cardPay element to identify it by the product name
+    cardPay.dataset.name = indexCard.name;
+
     cardContent.appendChild(cardPay);
 
-    bntDeleteCard.addEventListener('click',delet);
-
+    bntDeleteCard.addEventListener('click', delet);
 }
 
-function delet(event){
-    if (confirm('Are you wanting to remove order?')){
+function delet(event) {
+    if (confirm('Are you wanting to remove order?')) {
         event.target.parentElement.remove();
     }
 }
