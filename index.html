@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,11 @@
     <link rel="stylesheet" href="CSS/style.css">
     <script src="SCRIPT/main.js" defer></script>
 </head>
+
 <body>
     <nav class="side-nav">
         <ul>
-            <li><i class="material-icons" id="homeProduc">fastfood</i></li>
+            <li><i class="material-icons" id="homeProduct">fastfood</i></li>
             <li><i class="material-icons" id="Shoes">coffee</i></li>
             <li><i class="material-icons">history</i></li>
             <li><i class="material-icons">category</i></li>
@@ -21,33 +23,39 @@
     <div class="search-bar">
         <h2 id="shop-name">A8SHOP</h2>
         <div class="search">
-            <i class="material-icons" >search</i>
+            <i class="material-icons">search</i>
             <input type="text" name="search" id="search-input" placeholder="Search here!">
         </div>
     </div>
 
     <main>
-        <div class="list-container">
-            <div class="product-list">
-                <!-- <div class="product">
-                    <img src="/PICTURES/mister-potato.png" class="product-img" alt="">
-                    <p class="product-name">Mister Potato</p>
-                    <p class="product-stock">Total in Stock: <span>10</span></p>
-                    <p class="product-price">Price: <span>2</span></p>
-                    <button class="add-btn">Add!</button>
-                </div> -->
-            </div>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                    <th id="add">Add Product + </th>
+                    <!-- <th>Order</th> -->
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+
+
+        </table>
 
         <div class="cart-container">
-            <h2>Payment Here</h2>
-            <div class="product-incart">
-            </div>
+            <h3>Payment Here</h3>
+            <div class="product-incart"></div>
         </div>
+
         <div class="pay">
             <p class="final-amount">Total: 200$</p>
             <button class="pay-btn">Pay</button>
         </div>
     </main>
 </body>
+
 </html>
