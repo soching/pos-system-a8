@@ -27,6 +27,9 @@ body{
     padding-top: 10px;
 
 }
+#categoryName{
+    padding: 5px;
+}
 #button{
     font-size: 12px;
     background:white;
@@ -68,6 +71,7 @@ body{
 #categoryList{
     display: grid;
     gap: 10px;
+    text-transform: uppercase;
 }
 .listItem{
     display: grid;
@@ -94,9 +98,8 @@ body{
     padding: 3px;
 }
 
-
 #back{
-    background: orange;
+    background: white;
     padding: 8px;
     width: 100px;
     border: none;
