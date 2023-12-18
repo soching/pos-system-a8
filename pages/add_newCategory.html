@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+    <script src="/SCRIPT/add_newCategory.js" defer></script>
+</head>
+
+<body>
+    <h1>Add Category</h1>
+
+    <form id="categoryForm">
+        <label for="categoryName">Category Name:</label>
+        <input type="text" id="categoryName" required>
+        <button type="submit">Add Category</button>
+    </form>
+
+    <h2>Categories:</h2>
+    <ul id="categoryList"></ul>
+
+    <h2>Select Category:</h2>
+    <select id="categorySelect"></select>
+
+    <button id="deleteButton">Delete Category</button>
+</body>
+
+</html>
