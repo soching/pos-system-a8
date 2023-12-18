@@ -1,35 +1,31 @@
-// data
-let foodsProduct = [
-    { name: "Potato", stock: 10, price: 2, category: 'food' },
-    { name: "Mister potato", stock: 10, price: 2, category: 'food' },
-    { name: "Mister potato", stock: 10, price: 2, category: 'food' },
-    { name: "Mister potato", stock: 10, price: 2, category: 'food' },
-];
 
-let drinksProduct = [
-    { name: "Mister", stock: 10, price: 2, category: 'drink' },
-    { name: "Potato", stock: 10, price: 2, category: 'drink' },
-    { name: "Mister potato", stock: 10, price: 2, category: 'drink' },
-    { name: "Mister potato", stock: 10, price: 2, category: 'drink' },
-];
-let datas = [];
-datas.push(foodsProduct);
-datas.push(drinksProduct);
+// data from local=========
+const savedData = JSON.parse(localStorage.getItem('categoryData')) || {};
+let card = document.querySelector('.categoriesAll');
+// console.log(savedData);
 
-// save data to local storage
-function storeDataToLocalStorage(datas) {
-    localStorage.setItem('datas', JSON.stringify(datas));
-}
-storeDataToLocalStorage(datas);
+for (let index in savedData) {
+    // console.log(index);
+    const cardForm = document.createElement('div');
+    cardForm.classList.add('card-form');
 
-// get data from local storage
-function getDataFromLocalStorage() {
-    const storedData = JSON.parse(localStorage.getItem('datas'));
-    return storedData;
+    let cardShow = document.createElement('button');
+    cardShow.textContent = index;
+    cardShow.className = 'card-show';
+
+    // Attach data index to cardShow button
+    cardShow.dataset.index = index;
+
+    cardShow.addEventListener('click', createProduct);
+
+    cardForm.appendChild(cardShow);
+    card.appendChild(cardForm);
 }
 
 let product_list;
-function createProduct(data) {
+function createProduct(event) {
+    const index = event.target.dataset.index;
+    const data = savedData[index];
     product_list = document.querySelector('.tbody');
     product_list.innerHTML = '';
 
@@ -48,7 +44,8 @@ function createProduct(data) {
         category.textContent = product.category;
 
         let stock = document.createElement('td');
-        stock.textContent = product.stock;
+        stock.textContent = product.quantity;
+        console.log(stock);
 
         let price = document.createElement('td');
         price.textContent = product.price + ' $ ';
@@ -144,22 +141,4 @@ function delet(event) {
     }
 }
 
-/* buttons show category */
-let homeProduct = document.querySelector('#homeProduct');
-homeProduct.addEventListener('click', function () {
-    createProduct(dataSotage[0]);
-});
-
-let shoeProduct = document.querySelector('#Shoes');
-shoeProduct.addEventListener('click', function () {
-    createProduct(dataSotage[1]);
-});
-
-// Retrieving data from local storage
-let dataSotage = getDataFromLocalStorage();
-
-// home product
-createProduct(dataSotage[0]);
-
-// search product
 searchName.addEventListener('keyup', searchPro);
