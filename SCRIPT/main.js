@@ -68,6 +68,14 @@ function createProduct(event) {
 
 
         product_list.appendChild(productContainer);
+
+        btnDelete.addEventListener('click', deletProduct);
+    }
+}
+//Delete product
+function deletProduct(event) {
+    if (confirm('Do you want to delet ?')) {
+        event.target.parentElement.remove();
     }
 }
 
