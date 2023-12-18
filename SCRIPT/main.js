@@ -1,0 +1,165 @@
+// data
+let foodsProduct = [
+    { name: "Potato", stock: 10, price: 2, category: 'food' },
+    { name: "Mister potato", stock: 10, price: 2, category: 'food' },
+    { name: "Mister potato", stock: 10, price: 2, category: 'food' },
+    { name: "Mister potato", stock: 10, price: 2, category: 'food' },
+];
+
+let drinksProduct = [
+    { name: "Mister", stock: 10, price: 2, category: 'drink' },
+    { name: "Potato", stock: 10, price: 2, category: 'drink' },
+    { name: "Mister potato", stock: 10, price: 2, category: 'drink' },
+    { name: "Mister potato", stock: 10, price: 2, category: 'drink' },
+];
+let datas = [];
+datas.push(foodsProduct);
+datas.push(drinksProduct);
+
+// save data to local storage
+function storeDataToLocalStorage(datas) {
+    localStorage.setItem('datas', JSON.stringify(datas));
+}
+storeDataToLocalStorage(datas);
+
+// get data from local storage
+function getDataFromLocalStorage() {
+    const storedData = JSON.parse(localStorage.getItem('datas'));
+    return storedData;
+}
+
+let product_list;
+function createProduct(data) {
+    product_list = document.querySelector('.tbody');
+    product_list.innerHTML = '';
+
+    for (let i = 0; i < data.length; i++) {
+        let product = data[i];
+        let productContainer = document.createElement('tr');
+        productContainer.className = 'trProduct';
+
+        let id = document.createElement('td');
+        id.textContent = i + 1;
+
+        let name = document.createElement('td');
+        name.textContent = product.name;
+
+        let category = document.createElement('td');
+        category.textContent = product.category;
+
+        let stock = document.createElement('td');
+        stock.textContent = product.stock;
+
+        let price = document.createElement('td');
+        price.textContent = product.price + ' $ ';
+
+        let btnDelete = document.createElement('td');
+        btnDelete.textContent = 'delete';
+
+        let btnOrder = document.createElement('td');
+        btnOrder.textContent = 'Order';
+
+        btnOrder.addEventListener('click', createCardPay);
+
+        productContainer.appendChild(id);
+        productContainer.appendChild(name);
+        productContainer.appendChild(category);
+        productContainer.appendChild(stock);
+        productContainer.appendChild(price);
+        productContainer.appendChild(btnOrder);
+        productContainer.appendChild(btnDelete);
+
+
+        product_list.appendChild(productContainer);
+    }
+}
+
+function searchPro() {
+    for (pName of product_list.children) {
+        if (pName.children[1].textContent.toLocaleLowerCase().includes(searchName.value.toLocaleLowerCase())) {
+            pName.style.display = "table-row";
+        }
+        else {
+            pName.style.display = "none";
+        }
+    }
+
+}
+let searchName = document.querySelector("#search-input");
+
+function createCardPay(event) {
+    let isNotExit = true;
+    let cardContent = document.querySelector('.product-incart');
+    let productName = event.target.parentElement.children[1].textContent;
+    let productStock = parseInt(event.target.parentElement.children[3].textContent);
+    let productPrice = parseInt(event.target.parentElement.children[4].textContent);
+
+    for (let Quantitys of cardContent.children) {
+        let a = Quantitys.children[0].textContent;
+        if (a === productName) {
+            isNotExit = false;
+            if (productStock > (Quantitys.children[1].children[0].textContent)) {
+                Quantitys.children[1].children[0].textContent = parseInt(Quantitys.children[1].children[0].textContent) + 1;
+                Quantitys.children[2].children[0].textContent = parseInt(productPrice) * parseInt(Quantitys.children[1].children[0].textContent) + "$";
+            }
+        }
+    }
+    if (isNotExit) {
+        let cardPay = document.createElement('div');
+        cardPay.className = 'cardpay';
+
+        let cardNamePay = document.createElement('p');
+        cardNamePay.textContent = productName;
+
+        let cardQuality = document.createElement('p');
+        cardQuality.textContent = "Quantity: ";
+
+        let quantitySpan = document.createElement('span');
+        quantitySpan.textContent = 1;
+        cardQuality.appendChild(quantitySpan);
+
+        let cardPricePay = document.createElement('p');
+        cardPricePay.textContent = "Price: ";
+
+        let priceSpan = document.createElement('span');
+        priceSpan.textContent = productPrice + "$";
+        cardPricePay.appendChild(priceSpan);
+
+        let bntDeleteCard = document.createElement('button');
+        bntDeleteCard.className = 'bntdelet';
+        bntDeleteCard.textContent = 'delete';
+        cardPay.appendChild(cardNamePay);
+        cardPay.appendChild(cardQuality);
+        cardPay.appendChild(cardPricePay);
+        cardPay.appendChild(bntDeleteCard);
+        cardContent.appendChild(cardPay);
+
+        bntDeleteCard.addEventListener('click', delet);
+    }
+}
+
+function delet(event) {
+    if (confirm('Are you sure you want to remove the order?')) {
+        event.target.parentElement.remove();
+    }
+}
+
+/* buttons show category */
+let homeProduct = document.querySelector('#homeProduct');
+homeProduct.addEventListener('click', function () {
+    createProduct(dataSotage[0]);
+});
+
+let shoeProduct = document.querySelector('#Shoes');
+shoeProduct.addEventListener('click', function () {
+    createProduct(dataSotage[1]);
+});
+
+// Retrieving data from local storage
+let dataSotage = getDataFromLocalStorage();
+
+// home product
+createProduct(dataSotage[0]);
+
+// search product
+searchName.addEventListener('keyup', searchPro);
