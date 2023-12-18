@@ -133,6 +133,21 @@ function createCardPay(event) {
 
         bntDeleteCard.addEventListener('click', delet);
     }
+    //calculate total
+    let total = 0;
+    document.querySelector('.final-amount').textContent = '';
+    for (const card of document.querySelectorAll(".cardpay")) {
+        let quantity = card.firstElementChild.nextElementSibling.firstElementChild.textContent;
+        let price = card.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.textContent.replace("$", "");
+        if (quantity.length > 1){
+            for (let i = 0; i < quantity.length; i++){
+                total += price;
+            }
+        }else {
+            total += parseInt(price);
+        }
+    }
+    document.querySelector(".final-amount").textContent = "total " + total + "$";
 }
 
 function delet(event) {
