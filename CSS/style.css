@@ -75,13 +75,18 @@ body{
 }
 
 /* Product list  */
-
 main{
-
-    margin: 1.5% 0% 0% 7%;
+    /* margin: 1.5% 0% 0% 7%; */
+    margin-left: 80px;
+    margin-top: 20PX;
     display: flex;
-    
+}
 
+.categoriesAll{
+    display: flex;
+    flex-direction:column ;
+    margin:0 10px 10px 10px;
+    gap: 10px;
 }
 
 /* Add to cart pay */
@@ -94,6 +99,7 @@ main{
 }
 .trProduct{
     text-align: center;
+    padding: none;
 }
 .cart-container h3{
     text-align: center;
@@ -106,6 +112,10 @@ table{
     width: 100%;
     border-collapse: collapse;
 }
+.tbody{
+    padding: none;
+}
+
 td, th {
     border:1px solid #ccc;
     padding: 10px;
