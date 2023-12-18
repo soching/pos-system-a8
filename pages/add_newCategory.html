@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Category</title>
-    <script src="/SCRIPT/add_newCategory.js" defer></script>
+    <title>Categories</title>
+    <link rel="stylesheet" href="../CSS/new_category.css">
 </head>
 
 <body>
-    <h1>Add Category</h1>
+    <h1>Categories</h1>
+    <div class="container">
+        <form id="categoryForm">
+            <input type="text" id="categoryName" placeholder="Enter category name" required>
+            <button type="submit">Add Category</button>
+        </form>
 
-    <form id="categoryForm">
-        <label for="categoryName">Category Name:</label>
-        <input type="text" id="categoryName" required>
-        <button type="submit">Add Category</button>
-    </form>
+        <ul id="categoryList"></ul>
+    </div>
 
-    <h2>Categories:</h2>
-    <ul id="categoryList"></ul>
 
-    <h2>Select Category:</h2>
-    <select id="categorySelect"></select>
+    <div id="cardDetailsContainer"></div>
 
-    <button id="deleteButton">Delete Category</button>
+    <script src="../SCRIPT/add_newCategory.js"></script>
 </body>
 
 </html>

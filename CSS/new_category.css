@@ -1,0 +1,111 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+h3{
+    text-align: center;
+    text-transform: uppercase;
+
+}
+body{
+    display: flex;
+    /* align-items: center; */
+}
+.container {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin: auto;
+
+}
+#content{
+    background: rgb(255, 149, 0);
+    text-align: center;
+    padding-top: 10px;
+
+}
+#button{
+    font-size: 12px;
+    background:white;
+    border: none;
+    padding: 5px;
+    text-transform: uppercase;
+}
+#categoryForm {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    height: 30%;
+    padding: 30px;
+    background: rgb(255, 149, 0);
+    width: 700px;
+
+
+}
+.categoryname{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    background: rgb(255, 149, 0);
+    width: 740px;
+    padding: 10px;
+
+
+}
+.categoryOption{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(255, 149, 0);
+    width: 640px;
+    padding: 10px;
+}
+#categoryList{
+    display: grid;
+    gap: 10px;
+}
+.listItem{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+#cardDetailsContainer{
+    text-align: center;
+    margin-right: 40px;
+    margin-top: 50px;
+    background: rgb(255, 149, 0);
+    height:200px ;
+    width: 900px;
+    display: flex;
+    display: none;
+}
+
+.productShow{
+    font-size: 14px;
+    color:white;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 4px;
+    padding: 3px;
+}
+
+
+#back{
+    background: orange;
+    padding: 8px;
+    width: 100px;
+    border: none;
+}
+
+.btnCancel{
+    padding: 5px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 10px;
+
+}

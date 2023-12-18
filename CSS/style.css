@@ -114,6 +114,7 @@ table{
 }
 .tbody{
     padding: none;
+    height: 10px;
 }
 
 td, th {
@@ -125,6 +126,11 @@ td, th {
 }
 #add:hover{
     background: pink;
+}
+
+.card-show{
+    width: 50px;
+    background: orange;
 }
 .cardpay{
     display: grid;

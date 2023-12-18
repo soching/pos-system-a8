@@ -1,62 +1,82 @@
-    // Retrieve categories from local storage or create an empty array
-    let categories = JSON.parse(localStorage.getItem('categories')) || [];
+// Retrieve categories from local storage or create an empty array
+let categories = JSON.parse(localStorage.getItem('categories')) || [];
+const savedData = JSON.parse(localStorage.getItem('categoryData')) || {};
+const categoryList = document.getElementById('categoryList');
+const cardDetailsContainer = document.getElementById('cardDetailsContainer');
 
-    // Function to render categories in the list
-    function renderCategories() {
-      const categoryList = document.getElementById('categoryList');
-      categoryList.innerHTML = '';
+for (let i in savedData) {
+  const data = savedData[i];
+  const listItem = document.createElement('li');
+  listItem.className = 'listItem';
+  listItem.textContent = i;
 
-      categories.forEach(category => {
-        const listItem = document.createElement('li');
-        listItem.textContent = category;
-        categoryList.appendChild(listItem);
-      });
+  // Create a remove button
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.addEventListener('click', (event) => removeCategory(data, event));
+  listItem.appendChild(removeButton);
 
-      // Populate select options
-      const categorySelect = document.getElementById('categorySelect');
-      categorySelect.innerHTML = '';
+  const details = document.createElement('button');
+  details.textContent = 'Detail';
+  details.addEventListener('click', (event) => showCardDetails(data, event));
+  listItem.appendChild(details);
 
-      categories.forEach(category => {
-        const option = document.createElement('option');
-        option.textContent = category;
-        categorySelect.appendChild(option);
-      });
-    }
+  categoryList.appendChild(listItem);
+}
 
-    // Add category to the list and local storage
-    function addCategory(category) {
-      categories.push(category);
-      localStorage.setItem('categories', JSON.stringify(categories));
-      renderCategories();
-    }
+function showCardDetails(dataProduct, event) {
+  // Clear existing card details
+  cardDetailsContainer.style.display = 'block';
+  cardDetailsContainer.innerHTML = '';
 
-    // Delete category from the list and local storage
-    function deleteCategory(category) {
-      categories = categories.filter(item => item !== category);
-      localStorage.setItem('categories', JSON.stringify(categories));
-      renderCategories();
-    }
+  for (let dete of dataProduct) {
+    const cardDetailItem = document.createElement('p');
+    cardDetailItem.className = 'productShow';
+    cardDetailItem.textContent = dete.name + " In stock: " + dete.quantity + "  Total Price: " + dete.quantity * dete.price + '$';
+    cardDetailsContainer.appendChild(cardDetailItem);
+  }
 
-    // Submit form event listener
-    const form = document.getElementById('categoryForm');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const categoryNameInput = document.getElementById('categoryName');
-      const categoryName = categoryNameInput.value.trim();
+  let btnCancel = document.createElement('button');
+  btnCancel.className = 'btnCancel';
+  btnCancel.textContent = 'Cancel';
+  btnCancel.addEventListener('click', function () {
+    cardDetailsContainer.style.display = 'none';
+  });
 
-      if (categoryName !== '') {
-        addCategory(categoryName);
-        categoryNameInput.value = '';
-      }
-    });
+  cardDetailsContainer.appendChild(btnCancel);
+}
 
-    // Delete button event listener
-    const deleteButton = document.getElementById('deleteButton');
-    deleteButton.addEventListener('click', () => {
-      const categorySelect = document.getElementById('categorySelect');
-      const selectedCategory = categorySelect.value;
-      deleteCategory(selectedCategory);
-    });
+// Add category to the list and local storage
+function addCategory(category) {
+  categories.push(category);
+  localStorage.setItem('categories', JSON.stringify(categories));
+  savedData[category] = [];
+  localStorage.setItem('categoryData', JSON.stringify(savedData));
+}
 
-    // Initial rendering of categories
-    renderCategories();
+// Remove category from the list and local storage
+function removeCategory(dataProduct, event) {
+  // Access the index of the clicked button
+  const index = Array.from(categoryList.children).indexOf(event.currentTarget.parentNode);
+
+  // Delete the card from local storage
+  const categoryKey = Object.keys(savedData)[index];
+  delete savedData[categoryKey];
+  localStorage.setItem('categoryData', JSON.stringify(savedData));
+
+  // Remove the list item from the DOM
+  event.currentTarget.parentNode.remove();
+}
+
+// Submit form event listener
+const form = document.getElementById('categoryForm');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const categoryNameInput = document.getElementById('categoryName');
+  const categoryName = categoryNameInput.value.trim();
+
+  if (categoryName !== '') {
+    addCategory(categoryName);
+    categoryNameInput.value = '';
+  }
+});

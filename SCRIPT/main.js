@@ -2,10 +2,8 @@
 // data from local=========
 const savedData = JSON.parse(localStorage.getItem('categoryData')) || {};
 let card = document.querySelector('.categoriesAll');
-// console.log(savedData);
 
 for (let index in savedData) {
-    // console.log(index);
     const cardForm = document.createElement('div');
     cardForm.classList.add('card-form');
 
