@@ -4,7 +4,7 @@ const savedData = JSON.parse(localStorage.getItem('categoryData')) || {};
 
 for (let indexCategory of categories) {
   createOption(indexCategory, indexCategory);
-  console.log(indexCategory);
+  // console.log(indexCategory);
 }
 
 function createOption(value, text) {
@@ -23,11 +23,14 @@ productForm.addEventListener('submit', function(event) {
   const productPrice = document.querySelector('#productPrice').value;
   const productQuantity = document.querySelector('#productQuantity').value;
   const category = document.querySelector('#category').value;
+  const date = document.querySelector('#date').value;
+  console.log(date);
 
   const product = {
     name: productName,
     price: productPrice,
     quantity: productQuantity,
+    date:date,
     category: category
   };
 

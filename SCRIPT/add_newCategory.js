@@ -56,16 +56,19 @@ function addCategory(category) {
 
 // Remove category from the list and local storage
 function removeCategory(dataProduct, event) {
-  // Access the index of the clicked button
-  const index = Array.from(categoryList.children).indexOf(event.currentTarget.parentNode);
+  if (window.confirm('Do you want to delete?')) {
+    // Access the index of the clicked button
+    const index = Array.from(categoryList.children).indexOf(event.currentTarget.parentNode);
 
-  // Delete the card from local storage
-  const categoryKey = Object.keys(savedData)[index];
-  delete savedData[categoryKey];
-  localStorage.setItem('categoryData', JSON.stringify(savedData));
+    // Delete the card from local storage
+    const categoryKey = Object.keys(savedData)[index];
+    delete savedData[categoryKey];
+    localStorage.setItem('categoryData', JSON.stringify(savedData));
 
-  // Remove the list item from the DOM
-  event.currentTarget.parentNode.remove();
+    // Remove the list item from the DOM
+    event.currentTarget.parentNode.remove();
+  }
+
 }
 
 // Submit form event listener
