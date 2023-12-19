@@ -45,6 +45,7 @@ function createProduct(event) {
         let price = document.createElement('td');
         price.textContent = product.price + ' $ ';
 
+        
         let btnDelete = document.createElement('td');
         btnDelete.textContent = 'delete';
 
@@ -119,7 +120,6 @@ function createCardPay(event) {
             nameProduct.textContent += namePay + " ";
         }
 
-
         let cardQuality = document.createElement("p");
         cardQuality.textContent = "Quantity: ";
 
@@ -157,6 +157,9 @@ function createCardPay(event) {
                 productStock.textContent > Quantitys.children[1].children[0].textContent
             ) {
                 tr[3].textContent = productStock.textContent - 1;
+
+                console.log(tr[3].textContent);
+
                 Quantitys.children[1].children[0].textContent =
                     parseInt(Quantitys.children[1].children[0].textContent) + 1;
                 let b = (Quantitys.children[2].children[0].textContent =

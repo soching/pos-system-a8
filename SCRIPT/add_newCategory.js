@@ -1,6 +1,6 @@
 // Retrieve categories from local storage or create an empty array
-let categories = JSON.parse(localStorage.getItem('categories')) || [];
-const savedData = JSON.parse(localStorage.getItem('categoryData')) || {};
+let categories = JSON.parse(localStorage.getItem('categories'));
+const savedData = JSON.parse(localStorage.getItem('categoryData'));
 const categoryList = document.getElementById('categoryList');
 const cardDetailsContainer = document.getElementById('cardDetailsContainer');
 
@@ -62,6 +62,7 @@ function removeCategory(dataProduct, event) {
 
     // Delete the card from local storage
     const categoryKey = Object.keys(savedData)[index];
+
     delete savedData[categoryKey];
     localStorage.setItem('categoryData', JSON.stringify(savedData));
 

@@ -1,6 +1,6 @@
 // Load saved data from localStorage
-let categories = JSON.parse(localStorage.getItem('categories')) || [];
-const savedData = JSON.parse(localStorage.getItem('categoryData')) || {};
+let categories = JSON.parse(localStorage.getItem('categories'));
+const savedData = JSON.parse(localStorage.getItem('categoryData')) ;
 
 for (let indexCategory of categories) {
   createOption(indexCategory, indexCategory);
