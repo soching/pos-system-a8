@@ -158,6 +158,7 @@ function createCardPay(event) {
                     "$");
                 // // Extract number from string using regex \d
                 let c = document.querySelector(".final-amount");
+                console.log(c)
                 // // Add to total value based on the available incart
                 for (let j = 0; j < cp.length; j++) {
                     total += parseInt(cp[j].children[2].textContent.match(/\d+/)[0]);
