@@ -6,7 +6,6 @@ let card = document.querySelector('.categoriesAll');
 for (let index in savedData) {
     const cardForm = document.createElement('div');
     cardForm.classList.add('card-form');
-
     let cardShow = document.createElement('button');
     cardShow.textContent = index;
     cardShow.className = 'card-show';
@@ -43,7 +42,6 @@ function createProduct(event) {
 
         let stock = document.createElement('td');
         stock.textContent = product.quantity;
-        console.log(stock);
 
         let price = document.createElement('td');
         price.textContent = product.price + ' $ ';
@@ -161,5 +159,4 @@ function delet(event) {
         event.target.parentElement.remove();
     }
 }
-
 searchName.addEventListener('keyup', searchPro);
