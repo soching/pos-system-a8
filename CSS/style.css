@@ -121,6 +121,17 @@ td, th {
     border:1px solid #ccc;
     padding: 10px;
 }
+
+td:nth-child(6){
+    color: rgb(233, 245, 245);
+    background:gray;
+}
+td:nth-child(7){
+    color: rgb(233, 245, 245);
+    background:gray;
+}
+
+
 #add{
     background: rgb(255, 149, 0);
 }
@@ -131,6 +142,7 @@ td, th {
 .card-show{
     width: 50px;
     background: orange;
+    border: 2px solid rgb(117, 110, 110);
 }
 .cardpay{
     display: grid;
@@ -144,7 +156,12 @@ td, th {
     height: 20px;
     text-transform: uppercase;
     font-size: 10px;
+    background-color: red;
+    color: wheat;
+    border-radius: 10px;
+    border: none;
 }
+
 
 /* pay  */
 .pay{
