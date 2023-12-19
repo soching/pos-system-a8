@@ -186,28 +186,38 @@ td:nth-child(7){
     border: none;
 }
 .pay-btn{
-    background: green;
+    background: teal;
+    color: white;
+    border-radius: 5px;
 }
-
+.pay-btn:hover{
+    background-color: gray;
+}
 .cancel-btn{
-    background: red;
-}
+    background: orange;
+    color: white;
+    border-radius: 5px;
 
+}
+.cancel-btn:hover{
+    background-color: black;
+}
 
 .invoiceForm{
     position: absolute;
-    background: orange;padding: 20px;
+    background: teal;padding: 20px;
     width: 40%;
     margin-left: 250px;
     /* margin-top: 50px; */
     display: none;
+    border-radius: 10px;
 }
 .title{
     text-align: center;
 }
 #formInvive{
     display:grid;
-    color: aqua;
+    color: white;
     gap: 10px;
 }
 input,label{
