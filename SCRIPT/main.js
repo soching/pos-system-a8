@@ -22,6 +22,7 @@ let product_list;
 function createProduct(event) {
     const index = event.target.dataset.index;
     const data = savedData[index];
+    console.log(data);
     product_list = document.querySelector('.tbody');
     product_list.innerHTML = '';
 
@@ -45,13 +46,16 @@ function createProduct(event) {
         let price = document.createElement('td');
         price.textContent = product.price + ' $ ';
 
-        
-        let btnDelete = document.createElement('td');
+        let action = document.createElement('td');
+        action.className = 'action';
+
+        let btnDelete = document.createElement('span');
         btnDelete.textContent = 'delete';
 
-        let btnOrder = document.createElement('td');
+        let btnOrder = document.createElement('span');
         btnOrder.textContent = 'Order';
-
+        action.appendChild(btnOrder);
+        action.appendChild(btnDelete);
         btnOrder.addEventListener('click', createCardPay);
 
         productContainer.appendChild(id);
@@ -59,8 +63,8 @@ function createProduct(event) {
         productContainer.appendChild(category);
         productContainer.appendChild(stock);
         productContainer.appendChild(price);
-        productContainer.appendChild(btnOrder);
-        productContainer.appendChild(btnDelete);
+        // productContainer.appendChild(btnOrder);
+        productContainer.appendChild(action);
 
 
         product_list.appendChild(productContainer);
@@ -90,8 +94,10 @@ let searchName = document.querySelector("#search-input");
 const nameProduct = document.querySelector('.nameProduct');
 const numberProduct = document.querySelector('.numer');
 
+let cardpay = document.querySelector('.cart-container');
 
 function createCardPay(event) {
+
     let isNotExit = true;
     // ===================================================================
     let tr = event.target.closest("tr").children;
@@ -158,7 +164,6 @@ function createCardPay(event) {
             ) {
                 tr[3].textContent = productStock.textContent - 1;
 
-                console.log(tr[3].textContent);
 
                 Quantitys.children[1].children[0].textContent =
                     parseInt(Quantitys.children[1].children[0].textContent) + 1;
@@ -176,6 +181,8 @@ function createCardPay(event) {
             }
         }
     }
+
+    cardpay.style.display = 'block';
 
 }
 // =====================================================================
@@ -205,7 +212,6 @@ function delet(event) {
 searchName.addEventListener('keyup', searchPro);
 
 // button hiden and show
-
 let formIvioce = document.querySelector('.invoiceForm');
 let btn_show = document.querySelector('.pay-btn');
 btn_show.addEventListener('click', function () {
@@ -215,6 +221,8 @@ let btn_hiden = document.querySelector('.cancel-btn');
 btn_hiden.addEventListener('click', function () {
     formIvioce.style.display = 'none';
 })
+
+
 
 // card pay get values----------------------------------------
 let dataStory = JSON.parse(localStorage.getItem('storysole')) || [];
@@ -229,7 +237,6 @@ const payNowButton = document.querySelector('#submit');
 
 payNowButton.addEventListener('click', function (event) {
     event.preventDefault();
-
     const customerName = customerNameInput.value;
     const invoiceDate = invoiceDateInput.value;
     const nameProduct = nameProductElement.textContent;
@@ -243,5 +250,6 @@ payNowButton.addEventListener('click', function (event) {
     };
     dataStory.push(product);
     localStorage.setItem('storysole', JSON.stringify(dataStory));
-    document.innerHTML='';
+    document.innerHTML = '';
+    formIvioce.style.display = 'none';
 });

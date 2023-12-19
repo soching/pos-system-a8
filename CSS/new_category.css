@@ -10,7 +10,7 @@ h3{
 }
 body{
     display: flex;
-    /* align-items: center; */
+    background: teal;
 }
 .container {
     padding: 50px;

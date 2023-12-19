@@ -78,24 +78,26 @@ body{
 main{
     /* margin: 1.5% 0% 0% 7%; */
     margin-left: 80px;
-    margin-top: 20PX;
+    margin-top: 40PX;
     display: flex;
 }
 
 .categoriesAll{
     display: flex;
-    flex-direction:column ;
-    margin:0 10px 10px 10px;
+    margin-top: -30px;
+    margin-left: 10px;
     gap: 10px;
+    position: absolute;
 }
-
 /* Add to cart pay */
 .cart-container{
-    background-color:#ccc;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color:teal;
     width: 40%;
     margin-left: 20px;
     margin-right: 20px;
     padding: 10px;
+    display: none;
 }
 .trProduct{
     text-align: center;
@@ -111,6 +113,7 @@ main{
 table{
     width: 100%;
     border-collapse: collapse;
+    margin-left: 10px;
 }
 .tbody{
     padding: none;
@@ -121,16 +124,10 @@ td, th {
     border:1px solid #ccc;
     padding: 10px;
 }
-
-/* td:nth-child(6){
-    color: rgb(233, 245, 245);
-    background:gray;
+.action{
+    display: flex;
+    justify-content: space-around;
 }
-td:nth-child(7){
-    color: rgb(233, 245, 245);
-    background:gray;
-} */
-
 
 #add{
     background: rgb(255, 149, 0);
@@ -142,7 +139,12 @@ td:nth-child(7){
 .card-show{
     width: 50px;
     background: orange;
-    border: 2px solid rgb(117, 110, 110);
+    border: none;
+    padding: 3px;
+    border-radius: 5px;
+}
+.card-show:hover{
+    background: teal;
 }
 .cardpay{
     display: grid;
@@ -208,7 +210,7 @@ td:nth-child(7){
     background: teal;padding: 20px;
     width: 40%;
     margin-left: 250px;
-    /* margin-top: 50px; */
+    margin-top: 40px;
     display: none;
     border-radius: 10px;
 }
