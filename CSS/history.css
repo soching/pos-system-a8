@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.tbody{
+    padding: none;
+    height: 10px;
+}
+thead{
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: rgb(255, 149, 0);;
+}
+td, th {
+    border:1px solid #ccc;
+    padding: 10px;
+}
+button{
+    margin-top: 10px;
+    padding: 10px;
+    background:rgb(255, 149, 0);
+    border: none;
+    width: 90px;
+    margin: 20px;
+}
+

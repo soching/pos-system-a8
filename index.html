@@ -21,7 +21,10 @@
                 <li><i class="material-icons" id="Shoes">coffee</i></li>
 
             </a>
-            <li><i class="material-icons">history</i></li>
+            <a href="pages/history.html">
+                <li><i class="material-icons">history</i></li>
+            </a>
+
             <li><i class="material-icons">category</i></li>
         </ul>
     </nav>
@@ -32,6 +35,25 @@
             <i class="material-icons">search</i>
             <input type="text" name="search" id="search-input" placeholder="Search here!">
         </div>
+    </div>
+    <div class="invoiceForm">
+        <h4 class="title">Card Pay</h4>
+        <form action="/create-invoice" method="POST" id="formInvive">
+            <label for="customer-name">Customer Name:</label>
+            <input type="text" id="customer-name" name="customerName" required>
+
+            <label for="invoice-date">Invoice Date:</label>
+            <input type="date" id="invoice-date" name="invoiceDate" required>
+
+            <div class="lastPay">
+                <p>Name Product: <span class="nameProduct"></span></p>
+            </div>
+            <div class="totalPrice">
+                <p>Total Price: <span class="prices">00$</span></p>
+            </div>
+
+            <input type="submit" value="Pay Now" id="submit">
+        </form>
     </div>
     <main>
         <div class="categoriesAll"></div>
@@ -51,15 +73,17 @@
         </table>
 
         <div class="cart-container">
-            <h3>Payment Here</h3>
+            <h3>Product Order</h3>
             <div class="product-incart"></div>
         </div>
 
         <div class="pay">
-            <p class="final-amount">Total:</p>
+            <!-- <p class="final-amount">Total:</p> -->
+            <button class="cancel-btn">cancel</button>
             <button class="pay-btn">Pay</button>
         </div>
     </main>
+    <script src="/SCRIPT/main.js"></script>
 </body>
 
 </html>
