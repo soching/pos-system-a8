@@ -24,7 +24,6 @@ productForm.addEventListener('submit', function(event) {
   const productQuantity = document.querySelector('#productQuantity').value;
   const category = document.querySelector('#category').value;
   const date = document.querySelector('#date').value;
-  console.log(date);
 
   const product = {
     name: productName,

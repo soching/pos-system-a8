@@ -148,7 +148,8 @@ td, th {
 
 /* pay  */
 .pay{
-    background-color: rgb(255, 149, 0);
+    display: flex;
+    /* background-color: rgb(255, 149, 0); */
     border: none;
     border-radius: 10px;
     width: 250px;
@@ -158,16 +159,44 @@ td, th {
     bottom: 0;
     right: 0;
 }
-.final-amount{
-    color: black;
-    margin-left: 10%;
+.pay{
+    margin-bottom: 10px;
 }
-.pay-btn{
+.pay-btn,.cancel-btn{
     width: 200px;
     height: 30px;
     margin-left: 10%;
-
+    border: none;
 }
-.pay-btn:hover{
-    cursor: pointer;
+.pay-btn{
+    background: green;
+}
+
+.cancel-btn{
+    background: red;
+}
+
+
+.invoiceForm{
+    position: absolute;
+    background: orange;padding: 20px;
+    width: 40%;
+    margin-left: 250px;
+    /* margin-top: 50px; */
+    display: none;
+}
+.title{
+    text-align: center;
+}
+#formInvive{
+    display:grid;
+    color: aqua;
+    gap: 10px;
+}
+input,label{
+    width: 300px;
+    margin: auto;
+}
+.lastPay ,.totalPrice,.numberProduct{
+    margin-left: 110px;
 }
