@@ -1,4 +1,4 @@
-let dataStory = JSON.parse(localStorage.getItem('storysole'));
+let dataStory = JSON.parse(localStorage.getItem('storysole')||[]);
 
 let tbody = document.querySelector('tbody');
 
