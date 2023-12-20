@@ -12,6 +12,7 @@ for (let i in savedData) {
 
   // Create a remove button
   const removeButton = document.createElement('button');
+  removeButton.className = 'remove';
   removeButton.textContent = 'Remove';
   removeButton.addEventListener('click', (event) => removeCategory(data, event));
   listItem.appendChild(removeButton);

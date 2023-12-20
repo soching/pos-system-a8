@@ -102,9 +102,9 @@ const numberProduct = document.querySelector('.numer');
 
 let cardpay = document.querySelector('.cart-container');
 let soldout = 0;
-// const allSoldOut = [];
+const allSoldOut = [];
 
-// localStorage.setItem('allSoldOut', JSON.stringify(allSoldOut));
+localStorage.setItem('allSoldOut', JSON.stringify(allSoldOut));
 function createCardPay(event) {
 
     let allSoldOut = JSON.parse(localStorage.getItem('allSoldOut'));

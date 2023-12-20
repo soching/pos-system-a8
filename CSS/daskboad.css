@@ -56,3 +56,14 @@ body{
 .div-container p{
     margin-left: 5px;
 }
+a{
+    margin: auto;
+    margin-left: 600px;
+}
+button{
+    width: 100px;
+    background: orange;
+    margin: auto;
+    padding: 5px;
+    border: none;
+}
