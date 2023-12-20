@@ -1,5 +1,6 @@
 *{
     list-style-type: none;
+    list-style: none;
 }
 body{
     background-color: rgb(228, 228, 228);
@@ -20,6 +21,14 @@ body{
     top: 0;
     left: 0;
    
+}
+.groupButton{
+    display: flex;
+    width: 300px;
+    margin: auto;
+}
+#submit,#cancel{
+    width: 100px;
 }
 .side-nav ul{
     margin: 0%;

@@ -19,10 +19,11 @@ for (let index in savedData) {
 }
 
 let product_list;
+
 function createProduct(event) {
     const index = event.target.dataset.index;
     const data = savedData[index];
-    console.log(data);
+
     product_list = document.querySelector('.tbody');
     product_list.innerHTML = '';
 
@@ -50,11 +51,15 @@ function createProduct(event) {
         action.className = 'action';
 
         let btnDelete = document.createElement('span');
+        btnDelete.classList.add('material-icons')
         btnDelete.textContent = 'delete';
 
         let btnOrder = document.createElement('span');
-        btnOrder.textContent = 'Order';
+        btnOrder.classList.add('material-icons');
+        btnOrder.textContent = 'add';
+
         action.appendChild(btnOrder);
+
         action.appendChild(btnDelete);
         btnOrder.addEventListener('click', createCardPay);
 
@@ -66,12 +71,13 @@ function createProduct(event) {
         // productContainer.appendChild(btnOrder);
         productContainer.appendChild(action);
 
-
         product_list.appendChild(productContainer);
 
         btnDelete.addEventListener('click', deletProduct);
     }
 }
+
+
 //Delete product
 function deletProduct(event) {
     if (confirm('Do you want to delet ?')) {
@@ -121,6 +127,7 @@ function createCardPay(event) {
         let cardNamePay = document.createElement("p");
         cardNamePay.textContent = productName;
         // add name product to card pay
+
         let namePay = productName;
         if (nameProduct.textContent !== namePay) {
             nameProduct.textContent += namePay + " ";
@@ -212,6 +219,7 @@ function delet(event) {
 searchName.addEventListener('keyup', searchPro);
 
 // button hiden and show
+let cardContent = document.querySelector(".product-incart");
 let formIvioce = document.querySelector('.invoiceForm');
 let btn_show = document.querySelector('.pay-btn');
 btn_show.addEventListener('click', function () {
@@ -219,7 +227,7 @@ btn_show.addEventListener('click', function () {
 });
 let btn_hiden = document.querySelector('.cancel-btn');
 btn_hiden.addEventListener('click', function () {
-    formIvioce.style.display = 'none';
+    cardpay.style.display = 'none';
 })
 
 
@@ -234,22 +242,31 @@ const nameProductElement = document.querySelector('.nameProduct');
 const totalPriceElement = document.querySelector('.prices');
 
 const payNowButton = document.querySelector('#submit');
+const cancelButton = document.querySelector('#cancel');
+cancelButton.addEventListener('click',function(){
+    formIvioce.style.display = 'none';
+})
 
 payNowButton.addEventListener('click', function (event) {
     event.preventDefault();
-    const customerName = customerNameInput.value;
-    const invoiceDate = invoiceDateInput.value;
-    const nameProduct = nameProductElement.textContent;
-    const totalPrice = totalPriceElement.textContent;
+    if (window.confirm('Do you want to pay?')) {
+        const customerName = customerNameInput.value;
+        const invoiceDate = invoiceDateInput.value;
+        const nameProduct = nameProductElement.textContent;
+        const totalPrice = totalPriceElement.textContent;
 
-    const product = {
-        name: customerName,
-        data: invoiceDate,
-        nameProduct: nameProduct,
-        total: totalPrice,
-    };
-    dataStory.push(product);
-    localStorage.setItem('storysole', JSON.stringify(dataStory));
-    document.innerHTML = '';
-    formIvioce.style.display = 'none';
+        const product = {
+            name: customerName,
+            data: invoiceDate,
+            nameProduct: nameProduct,
+            total: totalPrice,
+        };
+        dataStory.push(product);
+        localStorage.setItem('storysole', JSON.stringify(dataStory));
+        document.innerHTML = '';
+        formIvioce.style.display = 'none';
+        cardpay.style.display = 'none';
+    }
+
+
 });
