@@ -1,6 +1,6 @@
 // Load saved data from localStorage
-let categories = JSON.parse(localStorage.getItem('categories'));
-const savedData = JSON.parse(localStorage.getItem('categoryData')) ;
+let categories = JSON.parse(localStorage.getItem('categories'))||[];
+const savedData = JSON.parse(localStorage.getItem('categoryData'))||{};
 
 for (let indexCategory of categories) {
   createOption(indexCategory, indexCategory);
@@ -39,9 +39,9 @@ productForm.addEventListener('submit', function(event) {
   // Retrieve existing products for the category or create an empty array
   savedData[category] = savedData[category] || [];
   savedData[category].push(product);
-  localStorage.setItem('categoryData', JSON.stringify(savedData));
+  localStorage.setItem('categoryData', JSON.stringify(savedData))||[];
   allProducts += 1;
-  localStorage.setItem('allProducts',JSON.stringify(allProducts));
+  localStorage.setItem('allProducts',JSON.stringify(allProducts))||[];
 
   productForm.reset();
 });

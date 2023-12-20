@@ -1,6 +1,6 @@
 // Retrieve categories from local storage or create an empty array
-let categories = JSON.parse(localStorage.getItem('categories'));
-const savedData = JSON.parse(localStorage.getItem('categoryData'));
+let categories = JSON.parse(localStorage.getItem('categories'))||[];
+const savedData = JSON.parse(localStorage.getItem('categoryData'))||{};
 const categoryList = document.getElementById('categoryList');
 const cardDetailsContainer = document.getElementById('cardDetailsContainer');
 
@@ -50,9 +50,9 @@ function showCardDetails(dataProduct, event) {
 // Add category to the list and local storage
 function addCategory(category) {
   categories.push(category);
-  localStorage.setItem('categories', JSON.stringify(categories));
+  localStorage.setItem('categories', JSON.stringify(categories))||[];
   savedData[category] = [];
-  localStorage.setItem('categoryData', JSON.stringify(savedData));
+  localStorage.setItem('categoryData', JSON.stringify(savedData))||{};
 }
 
 // Remove category from the list and local storage
@@ -65,7 +65,7 @@ function removeCategory(dataProduct, event) {
     const categoryKey = Object.keys(savedData)[index];
 
     delete savedData[categoryKey];
-    localStorage.setItem('categoryData', JSON.stringify(savedData));
+    localStorage.setItem('categoryData', JSON.stringify(savedData))|| {};
 
     // Remove the list item from the DOM
     event.currentTarget.parentNode.remove();
