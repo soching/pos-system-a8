@@ -89,8 +89,12 @@ let searchName = document.querySelector("#search-input");
 const nameProduct = document.querySelector('.nameProduct');
 const numberProduct = document.querySelector('.numer');
 
+let soldout = 0;
+// const allSoldOut = [];
 
+// localStorage.setItem('allSoldOut', JSON.stringify(allSoldOut));
 function createCardPay(event) {
+    let allSoldOut = JSON.parse(localStorage.getItem('allSoldOut'));
     let isNotExit = true;
     // ===================================================================
     let tr = event.target.closest("tr").children;
@@ -119,7 +123,6 @@ function createCardPay(event) {
             nameProduct.textContent += namePay + " ";
         }
 
-
         let cardQuality = document.createElement("p");
         cardQuality.textContent = "Quantity: ";
 
@@ -143,10 +146,13 @@ function createCardPay(event) {
         cardContent.appendChild(cardPay);
 
         bntDeleteCard.addEventListener("click", delet);
+        soldout = 1;
+        allSoldOut.push(soldout);
     }
-
-    // =====================code stock price ========================
+    localStorage.setItem('allSoldOut',JSON.stringify(allSoldOut));
+    // ===================== code stock price ========================
     let total = 0;
+    
     const cp = document.querySelector(".product-incart").children;
     for (let Quantitys of cardContent.children) {
 
@@ -157,6 +163,9 @@ function createCardPay(event) {
                 productStock.textContent > Quantitys.children[1].children[0].textContent
             ) {
                 tr[3].textContent = productStock.textContent - 1;
+                
+
+
                 Quantitys.children[1].children[0].textContent =
                     parseInt(Quantitys.children[1].children[0].textContent) + 1;
                 let b = (Quantitys.children[2].children[0].textContent =
@@ -172,13 +181,18 @@ function createCardPay(event) {
                 c.textContent = total + "$";
             }
         }
+        
+        
     }
 
 }
+
+
 // =====================================================================
 
 //calculate total
 let total = 0;
+
 document.querySelector('.prices').textContent = '';
 for (const card of document.querySelectorAll(".cardpay")) {
     let quantity = card.firstElementChild.nextElementSibling.firstElementChild.textContent;
@@ -222,6 +236,7 @@ const invoiceDateInput = document.getElementById('invoice-date');
 const nameProductElement = document.querySelector('.nameProduct');
 const totalPriceElement = document.querySelector('.prices');
 
+
 const payNowButton = document.querySelector('#submit');
 
 payNowButton.addEventListener('click', function (event) {
@@ -241,4 +256,7 @@ payNowButton.addEventListener('click', function (event) {
     dataStory.push(product);
     localStorage.setItem('storysole', JSON.stringify(dataStory));
     document.innerHTML='';
+    
 });
+
+
