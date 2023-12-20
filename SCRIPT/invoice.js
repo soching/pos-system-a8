@@ -30,3 +30,5 @@ let prin = document.querySelector('#prin');
 prin.addEventListener('click', () => {
     window.print();
 });
+
+console.log(dataStory)

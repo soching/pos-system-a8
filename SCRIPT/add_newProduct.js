@@ -17,6 +17,9 @@ function createOption(value, text) {
 
 const productForm = document.querySelector('#productForm');
 
+
+let allProducts = 0;
+
 productForm.addEventListener('submit', function(event) {
   event.preventDefault();
   const productName = document.querySelector('#productName').value;
@@ -37,6 +40,8 @@ productForm.addEventListener('submit', function(event) {
   savedData[category] = savedData[category] || [];
   savedData[category].push(product);
   localStorage.setItem('categoryData', JSON.stringify(savedData));
+  allProducts += 1;
+  localStorage.setItem('allProducts',JSON.stringify(allProducts));
 
   productForm.reset();
 });
