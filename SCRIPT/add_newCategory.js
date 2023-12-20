@@ -19,6 +19,7 @@ for (let i in savedData) {
 
   const details = document.createElement('button');
   details.textContent = 'Detail';
+  details.className = 'details';
   details.addEventListener('click', (event) => showCardDetails(data, event));
   listItem.appendChild(details);
 

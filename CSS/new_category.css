@@ -96,6 +96,8 @@ body{
     font-family: 'Courier New', Courier, monospace;
     margin: 4px;
     padding: 3px;
+    border: 1px solid white;
+    color: black;
 }
 
 #back{
@@ -116,4 +118,9 @@ body{
     padding: 5px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+}
+.details{
+    padding: 5px;
+    background: teal;
+    border: none;
 }
