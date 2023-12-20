@@ -163,7 +163,7 @@ function createCardPay(event) {
         soldout = 1;
         allSoldOut.push(soldout);
     }
-    localStorage.setItem('allSoldOut',JSON.stringify(allSoldOut)) ||[];
+    localStorage.setItem('allSoldOut',JSON.stringify(allSoldOut))||[];
     // ===================== code stock price ========================
     let total = 0;
     
@@ -276,7 +276,7 @@ payNowButton.addEventListener('click', function (event) {
             total: totalPrice,
         };
         dataStory.push(product);
-        localStorage.setItem('storysole', JSON.stringify(dataStory))||[];
+        localStorage.setItem('storysole', JSON.stringify(dataStory)) ||[];
         document.innerHTML = '';
         formIvioce.style.display = 'none';
         cardpay.style.display = 'none';
